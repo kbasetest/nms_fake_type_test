@@ -17,7 +17,7 @@
             "allow_multiple": false,
             "default_values": [ "" ],
             "field_type": "text",
-            "valid_file_types": ["FASTQ", "FASTQ-FWD"],
+            "valid_file_types": ["FASTQ", "FASTQ-FWD", "SYS"],
             "text_options": {
                 "valid_ws_types": ["SuperFake.Type"]
             }
