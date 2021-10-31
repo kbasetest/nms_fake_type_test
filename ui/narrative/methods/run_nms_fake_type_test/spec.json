@@ -16,8 +16,28 @@
             "advanced": false,
             "allow_multiple": false,
             "default_values": [ "" ],
-            "field_type": "text",
-            "valid_file_types": ["FASTQ", "FASTQ-FWD", "SYS"],
+            "field_type": "dynamic_dropdown",
+            "valid_file_types": ["FASTQ", "FASTQ-FWD"],
+            "dynamic_dropdown_options": {
+                "data_source": "custom",
+                "service_function": "taxonomy_re_api.search_species",
+                "service_version": "dev",
+                "service_params": [
+                    {
+                        "search_text": "prefix:{{dynamic_dropdown_input}}",
+                        "ns": "ncbi_taxonomy",
+                        "limit": 20
+                     }
+                 ],
+                "query_on_empty_input": 0,
+                "result_array_index": 0,
+                "path_to_selection_items": ["results"],
+                "selection_id": "ncbi_taxon_id",
+                "exact_match_on": "scientific_name",
+                "description_template": "NCBI Tax ID {{ncbi_taxon_id}}:&nbsp<strong>{{scientific_name}}</strong>",
+                "multiselection": false
+            },
+
             "text_options": {
                 "valid_ws_types": ["SuperFake.Type"]
             }
